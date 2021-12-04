@@ -1,0 +1,11 @@
+DDL
+sessions
+attendance
+exams
+teachers
+populations
+courses
+programs
+contacts
+students
+grades
