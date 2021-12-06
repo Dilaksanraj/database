@@ -318,3 +318,13 @@ where s.session_prof_ref is not null;
 --suggestion to improve the database
 add fk to teachers table in order to get the contact information of teachers
 no primary key for attendance table;
+
+--case select name,
+SELECT g.grade_score, g.grade_student_epita_email_ref,
+       CASE
+           WHEN g.grade_score >= 10 THEN 'Pass'
+           
+           WHEN g.grade_score <10 THEN 'fails'
+       END status
+FROM grades g 
+ORDER BY g.grade_student_epita_email_ref ;
