@@ -328,3 +328,21 @@ SELECT g.grade_score, g.grade_student_epita_email_ref,
        END status
 FROM grades g 
 ORDER BY g.grade_student_epita_email_ref ;
+
+--join and  limit will list only first highest score data
+select max(g.grade_score), CONCAT (c.contact_first_name, ' ', c.contact_last_name) as full_name from grades g 
+join students s on s.student_epita_email = grade_student_epita_email_ref 
+join contacts c on s.student_contact_ref = c.contact_email 
+where g.grade_course_code_ref = 'SE_ADV_JS'
+group by c.contact_last_name, c.contact_first_name
+limit(1);
+
+select max(g.grade_score) as max_score  from grades g where g.grade_course_code_ref = 'SE_ADV_JS'
+
+select * from grades g where g.grade_course_code_ref = 'SE_ADV_JS'
+
+
+--no of student in each program and years
+
+select count(s.student_population_code_ref) as no_of_student, s.student_population_code_ref,s.student_population_year_ref from students s
+group by s.student_population_code_ref,s.student_population_year_ref;
